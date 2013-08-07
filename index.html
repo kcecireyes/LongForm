@@ -5,51 +5,80 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
 
+  <!--   <link rel="stylesheet" type="text/css" href="small.css" media="only screen and (max-width:400px)"> -->
+
   <link rel="stylesheet" type="text/css" href="main_style.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="header">
+
+  <div class="container">
+
+    <div id="header">
       <img id="spec_logo" src="images/spec_logo.svg"> 
     </div> <!-- end of header -->
-      <img id="facebook" src="images/facebook.svg">
-      <img id="twitter" src="images/twitter.svg"> 
-      <img id="google_plus" src="images/google_plus.svg">  
-
-  <div class="body"> 
-    <div class="title">
-      <h1>THE</h1>
-      <h1>TENURE</h1>
-      <h1>PROCESS</h1>
-      <div class="byline">
-        <p>Cecilia Reyes</p>
-        <p>Alexandra Orth</p>
+    
+    <img id="facebook" src="images/facebook.svg">
+    <img id="twitter" src="images/twitter.svg"> 
+    <img id="google_plus" src="images/google_plus.svg">  
+    
+    <div class="body"> 
+    
+      <div class="title">
+        <h1>THE</h1>
+        <h1>TENURE</h1>
+        <h1>PROCESS</h1>
+    
+        <div class="byline">
+          <p>Cecilia Reyes</p>
+          <p>Alexandra Orth</p>
+        </div>
+    
       </div>
-    </div>
-
-  </div> <!-- end of body -->
-
-  <div class="footer">
-    <div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p></div>
-  </div> <!-- end of footer -->
+    
+      <div class="footer">
+        <div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p></div>
+      </div> <!-- end of footer -->
+    </div> <!-- end of body -->
+  </div> <!-- end of container -->
 
   <script type="text/javascript">
+    
+    $(document).ready(function() {
+      $(".title").css("display", "none");
+      $(".title").fadeIn(5000);
+    });
 
     $(document).ready(function() {
-        $(".title").css("display", "none");
-        $(".title").fadeIn(5000);
-      });
+      small(); 
+    });
+
+    var i=0;
+
+    function small() {
+      if ($(window).width() <= 400) {
+        alert("hey");
+        $("circle").replaceWith("<div></div>");
+        $("svg").children().attr("id", function() {
+          while(i!=4){
+            i=i+1;
+            console.log(i);
+            return "topic" + i;
+          };
+        }).css("background-color", "blue");
+      };
+    }
 
     $('.footer').click(function(){
-       if ($(this).css("height") == "35px") {
-          $(this).css("height","15%");
-        }
-       else{
-          $(this).css("height","35px");
-        }
-        $(this).children().toggle();
-      }
-    );
+     if ($(this).css("height") == "40%") {
+      $(this).css("height","15%");
+    }
+    else{
+      $(this).css("height","40%");
+    }
+    $(this).children().toggle();
+  }
+  );
 
     var w = 1280,
     h = 600;
@@ -77,7 +106,8 @@
 
       svg.selectAll("circle")
       .data(nodes.slice(1))
-      .enter().append("svg:circle")
+      .enter()
+      .append("svg:circle")
       .attr("r", function(d) { return d.radius - 2; })
       .style("fill", function(d, i) { return color(i % 3); });
 
