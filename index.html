@@ -22,28 +22,28 @@
     <img id="twitter" src="images/twitter.svg"> 
     <img id="google_plus" src="images/google_plus.svg">  
     
-    <div class="body"> 
-    
+    <div class="content"> 
+
       <div class="title">
         <h1>THE</h1>
         <h1>TENURE</h1>
         <h1>PROCESS</h1>
-    
-        <div class="byline">
+
+        <div id="byline">
           <p>Cecilia Reyes</p>
           <p>Alexandra Orth</p>
-        </div>
-    
-      </div>
-    
-      <div class="footer">
+        </div> <!-- end of byline -->
+
+      </div> <!-- end of title -->
+
+      <!-- <div class="footer">
         <div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p></div>
-      </div> <!-- end of footer -->
-    </div> <!-- end of body -->
+      </div>  --><!-- end of footer -->
+    </div> <!-- end of content -->
   </div> <!-- end of container -->
 
   <script type="text/javascript">
-    
+
     $(document).ready(function() {
       $(".title").css("display", "none");
       $(".title").fadeIn(5000);
@@ -53,19 +53,13 @@
       small(); 
     });
 
-    var i=0;
+    var divs = '<div id='+'topic1>'+'</div><div id='+'topic2>'+'</div><div id='+'topic3>'+'</div>';
 
     function small() {
       if ($(window).width() <= 400) {
-        alert("hey");
-        $("circle").replaceWith("<div></div>");
-        $("svg").children().attr("id", function() {
-          while(i!=4){
-            i=i+1;
-            console.log(i);
-            return "topic" + i;
-          };
-        }).css("background-color", "blue");
+        console.log("hey, your width is small");
+        $("svg").replaceWith('<div class=topics></div>')
+        $(".topics").append(divs);
       };
     }
 
@@ -100,7 +94,7 @@
 
       force.start();
 
-      var svg = d3.select(".body").append("svg:svg")
+      var svg = d3.select(".content").append("svg:svg")
       .attr("width", w)
       .attr("height", h);
 
