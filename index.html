@@ -16,11 +16,10 @@
 
     <div id="header">
       <img id="spec_logo" src="images/spec_logo.svg"> 
-    </div> <!-- end of header -->
-    
-    <img id="facebook" src="images/facebook.svg">
-    <img id="twitter" src="images/twitter.svg"> 
-    <img id="google_plus" src="images/google_plus.svg">  
+      <img id="facebook" src="images/facebook.svg">
+      <img id="twitter" src="images/twitter.svg"> 
+      <img id="google_plus" src="images/google_plus.svg">
+    </div> <!-- end of header -->  
     
     <div class="content"> 
 
@@ -36,9 +35,9 @@
 
       </div> <!-- end of title -->
 
-      <!-- <div class="footer">
+      <div class="footer">
         <div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p></div>
-      </div>  --><!-- end of footer -->
+      </div>  <!-- end of footer -->
     </div> <!-- end of content -->
   </div> <!-- end of container -->
 
@@ -60,6 +59,34 @@
         console.log("hey, your width is small");
         $("svg").replaceWith('<div class=topics></div>')
         $(".topics").append(divs);
+        $("#topic1").css("background-color", "#3182bd").append('<div class="arrow-right1"></div>');
+        $("#topic1").hover(function() {
+        $(this).append('<h2>History</h2>'); 
+        $(".title").hide();
+       },
+       function() {
+        
+        $(this).find("h2:last").remove();
+        $(".title").show();
+      });            
+        $("#topic2").css("background-color", "#6baed6").append('<div class="arrow-right2"></div>');
+        $("#topic2").hover(function() {
+        $(this).append('<h2>Data</h2>'); 
+        $(".title").hide();         
+       },
+       function() {
+        $(this).find("h2:last").remove();
+        $(".title").show();
+      });            
+        $("#topic3").css("background-color", "#9ecae1").append('<div class="arrow-right3"></div>');
+        $("#topic3").hover(function() {
+        $(this).append('<h2>People</h2>'); 
+        $(".title").hide();           
+       },
+       function() {
+        $(this).find("h2:last").remove();
+        $(".title").show();
+      });            
       };
     }
 
