@@ -98,56 +98,9 @@ function small() {
 
 // If the window size is between 401 and 899
 function medium() {   
-  var topic = [370,525,375, 200, 330, 450];
-  var fill = ["3182bd","6baed6","9ecae1"];
-  console.log("hey, you in medium, brah");
-  var nodes = d3.range(4).map(function() { return {radius: 90 }; });
-  var svg = d3.select(".content").append("svg:svg").attr("width", 800).attr("height", 600);
-
-  svg.selectAll("circle")
-  .data(nodes.slice(1))
-  .enter()
-  .append("svg:circle")
-  .attr("r", function(d) { return d.radius - 2; })
-  .attr("id", function(d,i) { return "topic" + (i+1); })
-  .style("fill", function(d,i) { return "#" + fill[i]} );
-
-  svg.selectAll("circle")
-  .attr("cx", function(d, i) { return topic[i]; }) //return 1*40 + 200;
-  .attr("cy", function(d, i) { return topic[i+3] });
-
-  // d3.select(".topic1").on("mouseover", function(){d3.select(this).style("opacity", "0.5");})
-  //   .on("mouseout", function(){d3.select(this).style("opacity", "1.0");});
-  // d3.select(".topic2").on("mouseover", function(){d3.select(this).style("opacity", "0.5");})
-  //   .on("mouseout", function(){d3.select(this).style("opacity", "1.0");});
-  // d3.select(".topic3").on("mouseover", function(){d3.select(this).style("opacity", "0.5");})
-  //   .on("mouseout", function(){d3.select(this).style("opacity", "1.0");});  
-
- //  $(".topic1").hover(function() {
- //    $(this).css("opacity", "0.5");
- //    console.log("i'm hovering guys");
- //  },
- //  function() {
- //    $(this).css("opacity", "1.0");
- //  });            
-
- //  //$(".topic2").css("fill", "#6baed6").css("r", "60");
- //  $(".topic2").hover(function() {
- //    $(".topic2").css("opacity", "0.5");        
- //    console.log("i'm hovering guys");
- //  },
- //  function() {
- //    $(this).css("opacity", "1.0");
- //  });            
-
- //  //$(".topic3").css("fill", "#9ecae1").css("r", "60");
- //  $(".topic3").hover(function() {
- //    $(this).css("opacity", "0.5");            
- //    console.log("i'm hovering guys");
- //  },
- //  function() {
- //    $(this).css("opacity", "1.0");
- // });
+  console.log("hey, you in medium, yo'");
+  $(".content").append('<div class=topics></div>')
+  $(".topics").append(divs);
 }  
 
     // Footer open and close
