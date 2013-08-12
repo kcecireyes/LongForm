@@ -64,7 +64,7 @@
 
 // In case the window size is less than or equal to 400 px
 function small() {  
-  console.log("hey, your width is small");
+  console.log("hey, you in small, yo'");
   $(".content").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").css("background-color", "#3182bd").append('<div class="arrow-right1"></div>');
@@ -97,34 +97,57 @@ function small() {
 }
 
 // If the window size is between 401 and 899
-function medium() {
-  var color = d3.scale.category20c(); 
-  $(".content").append('<svg class=topics width="800" height="900"></svg>')
-  $(".topics").append(circles);  
-  d3.selectAll("circle").attr("r", 50).style("fill", function(d, i) { return color(i % 3); });
-  //$("#topic1").css("fill", "#3182bd").css("r", "60"); 
-  $("#topic1").hover(function() {
-    $(this).append('<h2>History</h2>'); 
-  },
-  function() {
-    $(this).find("h2:last").remove();
-  });            
-    
-  //$("#topic2").css("fill", "#6baed6").css("r", "60");
-  $("#topic2").hover(function() {
-    $(this).append('<h2>Data</h2>');          
-  },
-  function() {
-    $(this).find("h2:last").remove();
-  });            
-    
-  //$("#topic3").css("fill", "#9ecae1").css("r", "60");
-  $("#topic3").hover(function() {
-    $(this).append('<h2>People</h2>');            
-  },
-  function() {
-    $(this).find("h2:last").remove();
-  });
+function medium() {   
+  var topic = [370,525,375, 200, 330, 450];
+  var fill = ["3182bd","6baed6","9ecae1"];
+  console.log("hey, you in medium, brah");
+  var nodes = d3.range(4).map(function() { return {radius: 90 }; });
+  var svg = d3.select(".content").append("svg:svg").attr("width", 800).attr("height", 600);
+
+  svg.selectAll("circle")
+  .data(nodes.slice(1))
+  .enter()
+  .append("svg:circle")
+  .attr("r", function(d) { return d.radius - 2; })
+  .attr("id", function(d,i) { return "topic" + (i+1); })
+  .style("fill", function(d,i) { return "#" + fill[i]} );
+
+  svg.selectAll("circle")
+  .attr("cx", function(d, i) { return topic[i]; }) //return 1*40 + 200;
+  .attr("cy", function(d, i) { return topic[i+3] });
+
+  // d3.select(".topic1").on("mouseover", function(){d3.select(this).style("opacity", "0.5");})
+  //   .on("mouseout", function(){d3.select(this).style("opacity", "1.0");});
+  // d3.select(".topic2").on("mouseover", function(){d3.select(this).style("opacity", "0.5");})
+  //   .on("mouseout", function(){d3.select(this).style("opacity", "1.0");});
+  // d3.select(".topic3").on("mouseover", function(){d3.select(this).style("opacity", "0.5");})
+  //   .on("mouseout", function(){d3.select(this).style("opacity", "1.0");});  
+
+ //  $(".topic1").hover(function() {
+ //    $(this).css("opacity", "0.5");
+ //    console.log("i'm hovering guys");
+ //  },
+ //  function() {
+ //    $(this).css("opacity", "1.0");
+ //  });            
+
+ //  //$(".topic2").css("fill", "#6baed6").css("r", "60");
+ //  $(".topic2").hover(function() {
+ //    $(".topic2").css("opacity", "0.5");        
+ //    console.log("i'm hovering guys");
+ //  },
+ //  function() {
+ //    $(this).css("opacity", "1.0");
+ //  });            
+
+ //  //$(".topic3").css("fill", "#9ecae1").css("r", "60");
+ //  $(".topic3").hover(function() {
+ //    $(this).css("opacity", "0.5");            
+ //    console.log("i'm hovering guys");
+ //  },
+ //  function() {
+ //    $(this).css("opacity", "1.0");
+ // });
 }  
 
     // Footer open and close
@@ -140,6 +163,7 @@ function medium() {
 
   // If the window size is greater than 900
   function big(){  
+    console.log("hey dude, your resolution be awesome");
     var w = 1200,
     h = 600;
 
