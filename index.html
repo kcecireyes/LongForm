@@ -35,9 +35,9 @@
 
       </div> <!-- end of title -->
 
-      <div class="footer">
+      <!-- <div class="footer">
         <div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p></div>
-      </div>  <!-- end of footer -->
+      </div>  --> <!-- end of footer -->
     </div> <!-- end of content -->
   </div> <!-- end of container -->
 
@@ -46,50 +46,88 @@
     $(document).ready(function() {
       $(".title").css("display", "none");
       $(".title").fadeIn(5000);
-    });
-
-    $(document).ready(function() {
-      small(); 
-    });
-
-    var divs = '<div id='+'topic1>'+'</div><div id='+'topic2>'+'</div><div id='+'topic3>'+'</div>';
-
-    function small() {
+      console.log("this is the width");
+      console.log($(window).width());
       if ($(window).width() <= 400) {
-        console.log("hey, your width is small");
-        $("svg").replaceWith('<div class=topics></div>')
-        $(".topics").append(divs);
-        $("#topic1").css("background-color", "#3182bd").append('<div class="arrow-right1"></div>');
-        $("#topic1").hover(function() {
-        $(this).append('<h2>History</h2>'); 
-        $(".title").hide();
-       },
-       function() {
-        
-        $(this).find("h2:last").remove();
-        $(".title").show();
-      });            
-        $("#topic2").css("background-color", "#6baed6").append('<div class="arrow-right2"></div>');
-        $("#topic2").hover(function() {
-        $(this).append('<h2>Data</h2>'); 
-        $(".title").hide();         
-       },
-       function() {
-        $(this).find("h2:last").remove();
-        $(".title").show();
-      });            
-        $("#topic3").css("background-color", "#9ecae1").append('<div class="arrow-right3"></div>');
-        $("#topic3").hover(function() {
-        $(this).append('<h2>People</h2>'); 
-        $(".title").hide();           
-       },
-       function() {
-        $(this).find("h2:last").remove();
-        $(".title").show();
-      });            
+        small();
+      }
+      else if ($(window).width() > 400 && $(window).width() < 900){
+        medium();
+      }
+      else{
+        big();
       };
-    }
+    });
 
+    var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
+    var circles = '<circle></circle><circle></circle><circle></circle>';
+
+// In case the window size is less than or equal to 400 px
+function small() {  
+  console.log("hey, your width is small");
+  $(".content").append('<div class=topics></div>')
+  $(".topics").append(divs);
+  $("#topic1").css("background-color", "#3182bd").append('<div class="arrow-right1"></div>');
+  $("#topic1").hover(function() {
+    $(this).append('<h2>History</h2>'); 
+    $(".title").hide();
+  },
+  function() {
+    $(this).find("h2:last").remove();
+    $(".title").show();
+  });            
+  $("#topic2").css("background-color", "#6baed6").append('<div class="arrow-right2"></div>');
+  $("#topic2").hover(function() {
+    $(this).append('<h2>Data</h2>'); 
+    $(".title").hide();         
+  },
+  function() {
+    $(this).find("h2:last").remove();
+    $(".title").show();
+  });            
+  $("#topic3").css("background-color", "#9ecae1").append('<div class="arrow-right3"></div>');
+  $("#topic3").hover(function() {
+    $(this).append('<h2>People</h2>'); 
+    $(".title").hide();           
+  },
+  function() {
+    $(this).find("h2:last").remove();
+    $(".title").show();
+  });            
+}
+
+// If the window size is between 401 and 899
+function medium() {
+  var color = d3.scale.category20c(); 
+  $(".content").append('<svg class=topics width="800" height="900"></svg>')
+  $(".topics").append(circles);  
+  d3.selectAll("circle").attr("r", 50).style("fill", function(d, i) { return color(i % 3); });
+  //$("#topic1").css("fill", "#3182bd").css("r", "60"); 
+  $("#topic1").hover(function() {
+    $(this).append('<h2>History</h2>'); 
+  },
+  function() {
+    $(this).find("h2:last").remove();
+  });            
+    
+  //$("#topic2").css("fill", "#6baed6").css("r", "60");
+  $("#topic2").hover(function() {
+    $(this).append('<h2>Data</h2>');          
+  },
+  function() {
+    $(this).find("h2:last").remove();
+  });            
+    
+  //$("#topic3").css("fill", "#9ecae1").css("r", "60");
+  $("#topic3").hover(function() {
+    $(this).append('<h2>People</h2>');            
+  },
+  function() {
+    $(this).find("h2:last").remove();
+  });
+}  
+
+    // Footer open and close
     $('.footer').click(function(){
      if ($(this).css("height") == "40%") {
       $(this).css("height","15%");
@@ -98,88 +136,86 @@
       $(this).css("height","40%");
     }
     $(this).children().toggle();
-  }
-  );
+  });
 
-    var w = 1280,
+  // If the window size is greater than 900
+  function big(){  
+    var w = 1200,
     h = 600;
 
     var nodes = d3.range(4).map(function() { return {radius: 90 }; }),
-    color = d3.scale.category20c();
-    window.onload = opening();
+    color = d3.scale.category20c();  
+    var force = d3.layout.force()
+    .gravity(0.05)
+    .charge(function(d, i) { return i ? 0 : -2000; })
+    .nodes(nodes)
+    .size([w, h]);
 
-    function opening(){    
-      var force = d3.layout.force()
-      .gravity(0.05)
-      .charge(function(d, i) { return i ? 0 : -2000; })
-      .nodes(nodes)
-      .size([w, h]);
+    var root = nodes[0];
+    root.radius = 0;
+    root.fixed = true;
 
-      var root = nodes[0];
-      root.radius = 0;
-      root.fixed = true;
+    force.start();
 
-      force.start();
+    var svg = d3.select(".content").append("svg:svg")
+    .attr("width", w)
+    .attr("height", h);
 
-      var svg = d3.select(".content").append("svg:svg")
-      .attr("width", w)
-      .attr("height", h);
+    svg.selectAll("circle")
+    .data(nodes.slice(1))
+    .enter()
+    .append("svg:circle")
+    .attr("r", function(d) { return d.radius - 2; })
+    .style("fill", function(d, i) { return color(i % 3); });
+
+    force.on("tick", function(e) {
+      var q = d3.geom.quadtree(nodes),
+      i = 0,
+      n = nodes.length;
+
+      while (++i < n) {
+        q.visit(collide(nodes[i]));
+      }
 
       svg.selectAll("circle")
-      .data(nodes.slice(1))
-      .enter()
-      .append("svg:circle")
-      .attr("r", function(d) { return d.radius - 2; })
-      .style("fill", function(d, i) { return color(i % 3); });
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+    });
 
-      force.on("tick", function(e) {
-        var q = d3.geom.quadtree(nodes),
-        i = 0,
-        n = nodes.length;
+    svg.on("mousemove", function() {
+      var p1 = d3.svg.mouse(this);
+      root.px = p1[0];
+      root.py = p1[1];
+      force.resume();
+    });
 
-        while (++i < n) {
-          q.visit(collide(nodes[i]));
-        }
-
-        svg.selectAll("circle")
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-      });
-
-      svg.on("mousemove", function() {
-        var p1 = d3.svg.mouse(this);
-        root.px = p1[0];
-        root.py = p1[1];
-        force.resume();
-      });
-
-      function collide(node) {
-        var r = node.radius + 16,
-        nx1 = node.x - r,
-        nx2 = node.x + r,
-        ny1 = node.y - r,
-        ny2 = node.y + r;
-        return function(quad, x1, y1, x2, y2) {
-          if (quad.point && (quad.point !== node)) {
-            var x = node.x - quad.point.x,
-            y = node.y - quad.point.y,
-            l = Math.sqrt(x * x + y * y),
-            r = node.radius + quad.point.radius;
-            if (l < r) {
-              l = (l - r) / l * .5;
-              node.x -= x *= l;
-              node.y -= y *= l;
-              quad.point.x += x;
-              quad.point.y += y;
-            }
+    function collide(node) {
+      var r = node.radius + 16,
+      nx1 = node.x - r,
+      nx2 = node.x + r,
+      ny1 = node.y - r,
+      ny2 = node.y + r;
+      return function(quad, x1, y1, x2, y2) {
+        if (quad.point && (quad.point !== node)) {
+          var x = node.x - quad.point.x,
+          y = node.y - quad.point.y,
+          l = Math.sqrt(x * x + y * y),
+          r = node.radius + quad.point.radius;
+          if (l < r) {
+            l = (l - r) / l * .5;
+            node.x -= x *= l;
+            node.y -= y *= l;
+            quad.point.x += x;
+            quad.point.y += y;
           }
-          return x1 > nx2
-          || x2 < nx1
-          || y1 > ny2
-          || y2 < ny1;
-        };
-      }
+        }
+        return x1 > nx2
+        || x2 < nx1
+        || y1 > ny2
+        || y2 < ny1;
+      };
     }
-  </script>
+  }
+</script>
 </body>
 </html>
