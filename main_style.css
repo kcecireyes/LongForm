@@ -1,199 +1,229 @@
-  html{
-    font-family: 'Lato';
-    margin: 0 auto;
-  }
-  h1{
-    margin-left: auto;
-    margin-right: auto;
-    display: block; 
-    letter-spacing: 1px;
-    z-index: 10;
-    font-size: 290%;
-    line-height: 55%;
-  }
-  h2{
-    margin: 0 0;
-    color: white;
-    position: relative;
-    text-align: center;
-    font-size: 500%;
-    top: 50px;
-    opacity: 1.0;
-  }
-  .arrow-right1, .arrow-right2, .arrow-right3{
-    display: table-cell;
-    vertical-align: middle;
-    margin-top: 15%;
-    float: right;
-    width: 0; 
-    height: 0; 
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid white;
-  }
-  #topic1:hover{
-    opacity: 0.5;
-    background: url('images/History.jpg') center center no-repeat;
-    fill: url('#image1');
-  }
-  #topic2:hover{
-    opacity: 0.5;
-    background: url('images/Data.jpg') center center no-repeat;
-    fill: url('#image2');
-  }
-  #topic3:hover{
-    opacity: 0.5;
-    background: url('images/People.jpg') top center no-repeat;
-    fill: url('#image3');
-  }
+html {
+  font-family: 'Lato';
+  margin: 0 auto;
+}
 
-  .container{
-    width: 100%;
-    height: 800px;
-    overflow: hidden;
-  }
-  .content{
-    z-index: 0;
-    height: 80%;
-    width: 100%;
-    clear: right;
-    overflow: hidden;
-  }
-  #byline{
-    line-height: 15%;
-    right: 75%;
-  }
-  .title{
-    text-align: right;
-    display: none;
-    position: absolute;
-    left: 35%;
-    top: 45%;
-  }
-  .topics{
-    z-index: 5;
-    display: block;
-    height: 90%;
-  }
-  #topic1, #topic2, #topic3{
-/*    z-index: 10;
-*/    display: block;
-    width: 100%;
-    height: 33.3333%
-  }
-  .footer{
-    background-color: yellow;
-    clear: both;
-    width: 100%;
-    height: 10%;
-    bottom: -5%;
-    position: absolute;
-  }
-  .abstract{
-    display: none;
-    background-color: white;
-    opacity: 0.6;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    width: 50%;
-  }
+h1 {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  letter-spacing: 1px;
+  z-index: 10;
+  font-size: 290%;
+  line-height: 55%;
+}
 
-  #twitter{
-    height: 30px;
-    float: right;
-  }
-  #facebook{
-    height: 30px;
-    float: right;
-  }
-  #google_plus{
-    height: 30px;
-    float: right;
-  }
-  #spec_logo{
-    margin-left: auto;
-    margin-right: auto;
-    display: block;  
-  }
+h2 {
+  margin: 0 0;
+  color: white;
+  position: relative;
+  text-align: center;
+  font-size: 500%;
+  top: 50px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1.0;
+}
+
+.topics {
+  z-index: 5;
+  display: block;
+  height: 90%;
+}
+
+#topic1,#topic2,#topic3 {
+  display: block;
+  width: 100%;
+  height: 33.3333%;
+}
+
+#topic1:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  background: url('images/History.jpg') center center no-repeat;
+  fill: url('#image');
+}
+
+#topic2:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  background: url('images/Data.jpg') center center no-repeat;
+  fill: url('#image2');
+}
+
+#topic3:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  background: url('images/People.jpg') top center no-repeat;
+  fill: url('#image3');
+}
+
+.container {
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+}
+
+.content {
+  z-index: 0;
+  height: 80%;
+  width: 100%;
+  clear: right;
+  overflow: hidden;
+}
+
+#byline {
+  line-height: 15%;
+  right: 75%;
+}
+
+.title {
+  text-align: right;
+  display: none;
+  position: absolute;
+  left: 35%;
+  top: 45%;
+}
+
+.footer {
+  background-color: #3182BD;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  clear: both;
+  width: 100%;
+  height: 13%;
+  margin-top: 100px;
+  position: absolute;
+}
+
+.abstract {
+  display: none;
+  background-color: white;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+  opacity: 0.6;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+
+#twitter {
+  height: 30px;
+  float: right;
+}
+
+#facebook {
+  height: 30px;
+  float: right;
+}
+
+#google_plus {
+  height: 30px;
+  float: right;
+}
+
+#spec_logo {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 
 /*
 Small screen media
 */
-
-@media only screen and (min-width: 0px) and (max-width: 400px){
-  p, h1{
+@media only screen and (min-width: 0px) and (max-width: 400px) {
+  p,h1 {
     color: white;
   }
-  #header{
+
+  #header {
     width: 100%;
     height: 20%;
     clear: right;
     margin: 0 0;
     padding: 0 0;
   }
-  .title{
+
+  .arrow-right1,.arrow-right2,.arrow-right3 {
+    display: table-cell;
+    vertical-align: middle;
+    margin-top: 15%;
+    float: right;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid white;
+  }
+
+  .title {
     width: 100%;
     position: fixed;
     text-align: left;
     right: 45%;
     left: 10%;
   }
-  #twitter, #facebook, #google_plus{
+
+  #twitter,#facebook,#google_plus {
     display: inline-block;
   }
-  .footer{
+
+  .footer {
     bottom: -5%;
     position: absolute;
-    height: 10%;
+    height: 6%;
   }
 }
 
 /*
 Medium sized screen media
 */
+@media only screen and (min-width: 401px) and (max-width: 900px) {
+  #arrow {
+    display: none;
+  }
 
-@media only screen and (min-width: 401px) and (max-width: 900px){
-  .title{
+  .title {
     width: 100%;
     position: fixed;
     text-align: left;
     right: 45%;
     left: 10%;
   }
-  h2{
+
+  h2 {
     font-size: 250%;
     color: white;
-    text-shadow: black 0.1em 0.1em 0.2em 
+    text-shadow: black 0.1em 0.1em 0.2em;
   }
-  #topic1,#topic2,#topic3{
+
+  #topic1,#topic2,#topic3 {
     border-radius: 50%;
     width: 180px;
-    height: 180px; 
+    height: 180px;
     position: relative;
   }
-  #topic1{
+
+  #topic1 {
     background-color: #3182bd;
     top: 17%;
     left: 40%;
   }
-  #topic2{
+
+  #topic2 {
     background-color: #6baed6;
     left: 65%;
     top: 12%;
   }
-  #topic3{
+
+  #topic3 {
     background-color: #9ecae1;
     left: 50%;
     top: 11%;
   }
-  #topic1:hover{
-    background: url('images/History.jpg') center center no-repeat;
-  }
-  #topic2:hover{
-    background: url('images/Data.jpg') center center no-repeat;
-  }
-  #topic3:hover{
-    background: url('images/People.jpg') top right no-repeat;
-  }
-} 
+}
