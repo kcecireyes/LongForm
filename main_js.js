@@ -1,8 +1,9 @@
 var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
+
 function resizedw(){
-  console.log("you have resized your window (whyyyy?)");
   var winWidth = $(window).width();
+  console.log("you have resized your window");
   if (winWidth <= 400) {
     $(".topics").remove();
     small();
@@ -22,7 +23,10 @@ function resizedw(){
 var doIt;
 $(window).resize(function(){
   clearTimeout(doIt);
-  doIt = setTimeout(resizedw, 100);
+  // if ($(window).width() <= 900){
+    //console.log("do i work?");
+     doIt = setTimeout(resizedw, 100);
+  //}
 });
 
 
@@ -193,3 +197,10 @@ function big(){
     };
   }
 }
+
+// Mobile functions
+$("#header").on("tap", function (event) {
+  alert("hello derr");
+});
+
+
