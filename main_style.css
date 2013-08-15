@@ -2,7 +2,10 @@ html {
   font-family: 'Lato';
   margin: 0 auto;
 }
-
+body{
+  margin: 0;
+  padding: 0;
+}
 h1 {
   margin-left: auto;
   margin-right: auto;
@@ -159,14 +162,6 @@ Small screen media
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     border-left: 20px solid white;
-  }
-
-  .title {
-    width: 100%;
-    position: fixed;
-    text-align: left;
-    right: 45%;
-    left: 10%;
   }
 
   #twitter,#facebook,#google_plus {

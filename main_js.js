@@ -197,10 +197,3 @@ function big(){
     };
   }
 }
-
-// Mobile functions
-$("#header").on("tap", function (event) {
-  alert("hello derr");
-});
-
-
