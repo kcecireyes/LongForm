@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+	<title>Data Visualizations</title>
+
+</head>
+<style type="text/css">
+	h2{
+		font-family: 'Lato', Helvetica, sans-serif;
+	}
+	p{
+		display: none;
+	}
+	body{
+		margin-left: 40px;
+		height: 506px;
+	}
+	.axis path, .axis line {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+
+	.label {
+		fill: #777;
+	}
+
+	.year.label {
+		font: 500 196px "Helvetica Neue";
+		fill: #ddd;
+	}
+
+	.year.label.active {
+		fill: #aaa;
+	}
+
+	.overlay {
+		fill: none;
+		pointer-events: all;
+		cursor: ew-resize;
+	}
+	circle{
+		stroke: none;
+	}
+
+</style>
+
+<body>
+	<h2>Faculty by School</h2>
+	<p>MORNINGSIDE ARTS & SCIENCES,661,676,680,734,743,807,830,812,822,854,870</p>
+	<p>MORNINGSIDE GRADUATE & PROFESSIONAL SCHOOLS,470,474,485,495,502,533,547,565,563,576,593</p>
+	<p>MEDICAL CENTER GRADUATE SCHOOLS,"1,956","2,009","2,063","2,095","2,156","2,163","2,189","2,253","2,249","2,140","2,199"</p>
+	<p>"Subtotal, Morningside Campus","1,131","1,150","1,165","1,229","1,245","1,340","1,377","1,377","1,385","1,430","1,463"
+		"Subtotal, Medical Center Campus","1,956","2,009","2,063","2,095","2,156","2,163","2,189","2,253","2,249","2,140","2,199"
+		UNIVERSITY TOTAL,"3,087","3,159","3,228","3,324","3,401","3,503","3,566","3,630","3,634","3,570","3,662"</p>
+
+	</body>
+
+	<script type="text/javascript">
+
+// Chart dimensions.
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
+width = 960 - margin.right,
+height = 500 - margin.top - margin.bottom;
+
+// Various scales. These domains make assumptions of data, naturally.
+// var xScale = d3.scale.linear().domain([1,18]).range([0, width]),
+//     yScale = d3.scale.linear().domain([10, 2000]).range([height, 0]),
+//     radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]),
+//     colorScale = d3.scale.category10();
+
+// // The x & y axes.
+// var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d")),
+//     yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+// Create the SVG container and set the origin.
+var svg = d3.select("body").append("svg")
+.attr("width", width + margin.left + margin.right)
+.attr("height", height + margin.top + margin.bottom)
+.append("g")
+.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Add the year label; the value is set on transition.
+var label = svg.append("text")
+    .attr("class", "year label")
+    .attr("text-anchor", "end")
+    .attr("y", height - 24)
+    .attr("x", width)
+    .text(2002);
+
+// Add an overlay for the year label.
+  var box = label.node().getBBox();
+
+  var overlay = svg.append("rect")
+        .attr("class", "overlay");
+
+  // After the transition finishes, you can mouseover to change the year.
+  function enableInteraction() {
+    var yearScale = d3.scale.linear()
+        .domain([1800, 2009])
+        .range([box.x + 10, box.x + box.width - 10])
+        .clamp(true);
+    }
+// Add the x-axis.
+// svg.append("g")
+//     .attr("class", "x axis")
+//     .attr("transform", "translate(0," + height + ")")
+//     .call(xAxis);
+// // Add the y-axis.
+// svg.append("g")
+//     .attr("class", "y axis")
+//     .call(yAxis);
+// // Add an x-axis label.
+// svg.append("text")
+//     .attr("class", "x label")
+//     .attr("text-anchor", "end")
+//     .attr("x", width)
+//     .attr("y", height - 6)
+//     .text("School name");
+// // Add a y-axis label.
+// svg.append("text")
+//     .attr("class", "y label")
+//     .attr("text-anchor", "end")
+//     .attr("y", 6)
+//     .attr("dy", ".75em")
+//     .attr("transform", "rotate(-90)")
+//     .text("No. of people");
+
+var dataset = [];
+
+d3.csv("data/total_faculty_timeline.csv", function (data) {
+	var yr = 2012;
+	var facultyData = data;
+	// for (var i = 2002; i < 2013; i++) {
+	 	yearlyData(facultyData, yr);
+	// };
+
+	function yearlyData (data, yr) {
+		var year = String(yr);
+		dataset = data.map(function(d) { return [+d[year]]; });
+		console.log(dataset);
+		makeDots();
+	}
+
+	function makeDots () {
+		dot = svg.append("g")
+		.attr("class", "dots")
+		.selectAll(".dot")
+		.data(data)
+		.enter().append("circle")
+		.attr("class", "dot")
+		.style("fill", "steelblue")
+		.attr("r", function(d,i){ return Math.sqrt(dataset[i]); })
+		.attr("cx", function(d,i) { return i * 55; })
+		.attr("cy", function() { return  100; }) //Math.random() * 300;
+		.sort(order);
+	}
+
+	// Defines a sort order so that the smallest dots are drawn on top.
+  	function order(a, b) {
+    	return radius(b) - radius(a);
+  	}
+  // add a name
+		dot.append("title")
+      	.text(function(d) { return d.school; });
+});			
+
+</script>
+</html>
