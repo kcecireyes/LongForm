@@ -1,0 +1,41 @@
+h2{
+	font-family: 'Lato', Helvetica, sans-serif;
+}
+
+body{
+	margin-left: 40px;
+	height: 506px;
+}
+
+.dot:hover{
+	opacity: 0.7;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.label {
+	fill: #777;
+}
+
+.year.label {
+	font: 500 156px "Helvetica Neue";
+	fill: #ddd;
+}
+
+.year.label.active {
+	fill: #aaa;
+}
+
+.overlay {
+	fill: none;
+	pointer-events: all;
+	cursor: ew-resize;
+}
+circle{
+	stroke: none;
+}
+
