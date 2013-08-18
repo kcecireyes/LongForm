@@ -8,6 +8,5 @@ Alexandra Orth
 
 Bugs:
 
- -Resizing at higher widths will update bouncy circles again
- -<circle> elements need a background image
- -Window margin on the left
+ - Resizing at higher widths will update bouncy circles again
+ - <circle> elements need a background image
