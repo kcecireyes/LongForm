@@ -10,9 +10,24 @@
 	<title>Data Visualizations</title>
 
 </head>
-
 <body>
-	<h2>Faculty by School</h2>
+	<h2>Data Representations</h2>
+	<div id="pie">
+		<p>Employees by Race</p>
+		<form>
+			<label><input type="radio" name="dataset" value="Asian" checked> Asian</label>
+			<label><input type="radio" name="dataset" value="Black"> Black</label>
+			<label><input type="radio" name="dataset" value="Hispanic"> Hispanic</label>
+			<label><input type="radio" name="dataset" value="Native"> Native</label>
+			<label><input type="radio" name="dataset" value="Pacific"> Pacific</label>
+			<label><input type="radio" name="dataset" value="Multiple"> Multiple</label>
+			<label><input type="radio" name="dataset" value="Undisclosed"> Undisclosed</label>
+			<label><input type="radio" name="dataset" value="White"> White</label>
+			<label><input type="radio" name="dataset" value="Non_Resident"> Non_Resident</label>
+		</form>
+	</div>
+	<br>
+	<p>Faculty by School</p>	
 </body>
 
 <script type="text/javascript">	
@@ -35,6 +50,14 @@
 	.attr("y", height - 24)
 	.attr("x", width)
 	.text(2002);
-</script>
 
+	// Pie chart dimensions
+
+	var svg2 = d3.select("#pie").append("svg")
+	.attr("width", 960)
+	.attr("height", 500)
+	.attr("id", "pieSvg")
+	.append("g")
+	.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+</script>
 </html>
