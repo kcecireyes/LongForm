@@ -5,7 +5,12 @@
 
 //load data
 var dataset = [];
-d3.csv("data/total_faculty_timeline.csv", function (data) {
+var color = d3.scale.ordinal()
+    .range(["steelblue", "steelblue", "steelblue", "steelblue", "steelblue", 
+      "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6",
+      "#F08080","#F08080","#F08080","#F08080","#F08080"]);
+
+d3.csv("data/faux.csv", function (data) {
 	var yr = 2012;
 	var facultyData = data;
 	yearlyData(facultyData, yr);
@@ -25,7 +30,7 @@ function makeDots () {
 	.data(data)
 	.enter().append("circle")
 	.attr("class", "dot")
-	.style("fill", "steelblue")
+	.style("fill", function (d,i) {return color(i) } )
 	.attr("r", function(d,i){ return Math.sqrt(dataset[i]); })
 	.attr("cx", function(d,i) { return i * 55; })
 	.attr("cy", function() { return  100; }); //Math.random() * 300;
