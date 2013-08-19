@@ -155,6 +155,9 @@ Small screen media
     padding: 0 0;
   }
 
+  .title {
+    text-align: left;
+  }
   .arrow-right1,.arrow-right2,.arrow-right3 {
     display: table-cell;
     vertical-align: middle;
@@ -172,7 +175,7 @@ Small screen media
   }
 
   .footer {
-    bottom: -5%;
+    bottom: -65%;
     position: absolute;
     height: 6%;
   }

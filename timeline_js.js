@@ -10,8 +10,8 @@ var color = d3.scale.ordinal()
       "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6",
       "#F08080","#F08080","#F08080","#F08080","#F08080"]);
 
-d3.csv("data/faux.csv", function (data) {
-	var yr = 2012;
+d3.csv("data/faux.csv", function (data) { // total_faculty_timeline.csv
+	var yr = 2012; 
 	var facultyData = data;
 	yearlyData(facultyData, yr);
 
