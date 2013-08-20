@@ -2,6 +2,7 @@
 <html>
 <head>
 	<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
 	<script type="text/javascript" src="timeline_js.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	
@@ -11,15 +12,15 @@
 
 </head>
 <body>
-	<h2>Data Representations</h2>
+	<h2>Data</h2>
 	<div id="pie">
 		<p>Employees by Race</p>
 		<form>
 			<label><input type="radio" name="dataset" value="Asian" checked> Asian</label>
 			<label><input type="radio" name="dataset" value="Black"> Black</label>
 			<label><input type="radio" name="dataset" value="Hispanic"> Hispanic</label>
-			<label><input type="radio" name="dataset" value="Native"> Native</label>
-			<label><input type="radio" name="dataset" value="Pacific"> Pacific</label>
+			<label><input type="radio" name="dataset" value="Native"> American Indian/Alaska Native</label>
+			<label><input type="radio" name="dataset" value="Pacific"> Pacific Islander</label>
 			<label><input type="radio" name="dataset" value="Multiple"> Multiple</label>
 			<label><input type="radio" name="dataset" value="Undisclosed"> Undisclosed</label>
 			<label><input type="radio" name="dataset" value="White"> White</label>
@@ -27,7 +28,8 @@
 		</form>
 	</div>
 	<br>
-	<p>Faculty by School</p>	
+	<p>Faculty by School</p>
+	<text> Mouse over the year to see faculty numbers change </text>	
 </body>
 
 <script type="text/javascript">	
@@ -59,5 +61,6 @@
 	.attr("id", "pieSvg")
 	.append("g")
 	.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
 </script>
 </html>

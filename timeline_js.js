@@ -10,7 +10,7 @@ var color = d3.scale.ordinal()
   "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6",
   "#F08080","#F08080","#F08080","#F08080","#F08080"]);
 
-d3.csv("data/faux.csv", function (data) { // total_faculty_timeline.csv
+d3.csv("data/total_faculty_timeline.csv", function (data) { //
 	var yr = 2012; 
 	var facultyData = data;
 	yearlyData(facultyData, yr);
@@ -34,11 +34,15 @@ d3.csv("data/faux.csv", function (data) { // total_faculty_timeline.csv
   .attr("r", function(d,i){ return Math.sqrt(dataset[i]); })
   .attr("cx", function(d,i) { return i * 55; })
 	.attr("cy", function() { return  100; }); //Math.random() * 300;
-}
 
-// add a name
-dot.append("title")
-.text(function(d) { return d.school; });
+  // add a tooltip
+  dot.call(d3.helper.tooltip()
+    .style({color: 'black'})
+    .text(function(d, i){ return d.school + " (" + dataset[i] + ")"; })
+    )
+  .on('mouseover', function(d, i){ d3.select(this).style({opacity: '0.7'}); })
+  .on('mouseout', function(d, i){ d3.select(this).style({opacity: '1.0'}); });
+}
 
 // Add an overlay for the year label.
 var box = label.node().getBBox();
@@ -103,15 +107,21 @@ var arc = d3.svg.arc()
 loadData();
 
 function loadData () {
-  console.log("why won't you load? :( ");
-    d3.csv("data/Race.csv", function(raceData){
-      var path = svg2.datum(raceData).selectAll("path")
-      .data(pie)
-      .enter().append("path")
-      .attr("fill", function(d, i) { return colorS(i); })
-      .attr("id", function (d,i) { return dept[i]; })
-      .attr("d", arc)
+  d3.csv("data/Race.csv", function(raceData){
+    var path = svg2.datum(raceData).selectAll("path")
+    .data(pie)
+    .enter().append("path")
+    .attr("fill", function(d, i) { return colorS(i); })
+    .attr("id", function (d,i) { return dept[i]; })
+    .attr("d", arc)
   .each(function(d) { this._current = d; }); // store the initial angles
+
+  path.call(d3.helper.tooltip()
+     .style({color: 'black'})
+     .text(function(d, i){ return d.Field; })
+     )
+  .on('mouseover', function(d, i){ d3.select(this).style({opacity: '0.7'}); })
+  .on('mouseout', function(d, i){ d3.select(this).style({opacity: '1.0'}); });
 
   d3.selectAll("input")
   .on("change", change);
@@ -130,13 +140,24 @@ function loadData () {
   function change() {
     var value = this.value;
     clearTimeout(timeout);
+
   pie.value(function(d) { return d[value]; }); // change the value function
   path = path.data(pie); // compute the new angles
   path.transition().duration(750).attrTween("d", arcTween); // redraw the arcs
   
-}
+  path.call(d3.helper.tooltip()
+     .style({color: 'black'})
+     .text(function(d, i){ return dept[i]; })
+     )
+  .on('mouseover', function(d, i){ d3.select(this).style({opacity: '0.7'}); })
+  .on('mouseout', function(d, i){ d3.select(this).style({opacity: '1.0'}); });
+  }
 });
 
+}
+
+function addTooltip () {
+  
 }
 
 function type(d) {

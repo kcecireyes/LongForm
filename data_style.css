@@ -1,4 +1,4 @@
-p,h2{
+html,p,h2{
 	font-family: 'Lato', Helvetica, sans-serif;
 }
 
@@ -8,10 +8,6 @@ p{
 body{
 	margin-left: 40px;
 	height: 506px;
-}
-
-.dot:hover{
-	opacity: 0.7;
 }
 
 .axis path, .axis line {
@@ -41,18 +37,19 @@ body{
 circle{
 	stroke: none;
 }
-	text {
-  font: 10px sans-serif;
+
+text {
+  	font: 15px 'Lato';
 }
 
 form {
   position: absolute;
   right: 0;
-  left: 120px;
+  left: 90px;
   margin: 0;
   top: 600px;
 }
-
-path:hover{
-  opacity: 0.7;
+label{
+	padding: 2px;
 }
+
