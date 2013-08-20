@@ -3,6 +3,10 @@ html {
   margin: 0 auto;
 }
 
+a{ color: white; text-decoration: none; }
+
+a:active{ color: white; text-decoration: none; }
+
 body{
   margin: 0;
   padding: 0;

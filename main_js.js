@@ -1,5 +1,5 @@
-var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
+var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
 function resizedw(){
   var winWidth = $(window).width();
@@ -25,17 +25,16 @@ $(window).resize(function(){
   clearTimeout(doIt);
   // if ($(window).width() <= 900){
     //console.log("do i work?");
-     doIt = setTimeout(resizedw, 100);
+    doIt = setTimeout(resizedw, 100);
   //}
 });
 
 
-  // Footer open and close
-  $(".footer").click(function () { $(".abstract").fadeToggle("slow", "linear"); });
+// Footer open and close
+$(".footer").click(function () { $(".abstract").fadeToggle("slow", "linear"); });
 
 // In case the window size is less than or equal to 400 px
 function small() {
-  console.log("oh hey there small"); 
   $(".content").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").css("background-color", "#3182bd").append('<div id="arrow" class="arrow-right1"></div>');
@@ -49,7 +48,7 @@ function small() {
   });            
   $("#topic2").css("background-color", "#6baed6").append('<div id="arrow" class="arrow-right2"></div>');
   $("#topic2").hover(function() {
-    $(this).append('<h2>Data</h2>'); 
+    $(this).append('<h2><a href="/data.html">Data</a></h2>'); 
     $(".title").hide();         
   },
   function() {
@@ -69,7 +68,6 @@ function small() {
 
 // If the window size is between 401 and 899
 function medium() {
-  console.log("oh hey there medium");  
   $(".content").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").hover(function() {
@@ -79,7 +77,7 @@ function medium() {
     $(this).find("h2:last").remove();
   });            
   $("#topic2").hover(function() {
-    $(this).append('<h2>Data</h2>');          
+    $(this).append('<h2><a href="/data.html">Data</a></h2>');          
   },
   function() {
     $(this).find("h2:last").remove();
@@ -94,7 +92,6 @@ function medium() {
 
 // If the window size is greater than 900
 function big(){  
-  console.log("oh hey there big");
   var w = 1200,
   h = 600;
 
@@ -124,27 +121,12 @@ function big(){
 
   // $("#topic1").hover(function() {$(this).css("fill", "url('#image');"); });
 
-  // var defs = d3.select("svg").append('svg:defs');
-  // defs.append('svg:pattern')
-  // .attr('id', 'image')
-  // .attr('patternUnits', 'userSpaceOnUse')
-  // .attr('width', '6')
-  // .attr('height', '6')
-  // .attr('x', 0)
-  // .attr('y', 0)
-  // .append('svg:image')
-  // .attr('xlink:href', '/images/History.jpg')
-  // .attr('x', 0)
-  // .attr('y', 0);
-  // .attr('width', 6)
-  // .attr('height', 6);
-
   svg.selectAll("circle")
   .data(nodes.slice(1))
   .enter()
   .append("svg:circle")
   .attr("r", function(d) { return d.radius - 2; })
-  .style("fill", function(d, i) { return color(i % 3); });
+  .style("fill", function(d, i) { return color(i % 3); }); //color(i % 3)
 
   force.on("tick", function(e) {
     var q = d3.geom.quadtree(nodes),
