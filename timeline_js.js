@@ -7,7 +7,7 @@
 var dataset = [];
 var color = d3.scale.ordinal()
 .range(["steelblue", "steelblue", "steelblue", "steelblue", "steelblue", 
-  "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6", "#FAF0E6",
+  "#F5DEB3", "#F5DEB3", "#F5DEB3", "#F5DEB3", "#F5DEB3", "#F5DEB3", "#F5DEB3",
   "#F08080","#F08080","#F08080","#F08080","#F08080"]);
 
 d3.csv("data/total_faculty_timeline.csv", function (data) { //
