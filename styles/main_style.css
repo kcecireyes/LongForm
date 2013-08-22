@@ -51,7 +51,7 @@ h2 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
   opacity: 0.5;
-  background: url('images/History.jpg') center center no-repeat;
+  background: url('../images/History.jpg') center center no-repeat;
   fill: url('#image');
 }
 
@@ -59,7 +59,7 @@ h2 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
   opacity: 0.5;
-  background: url('images/Data.jpg') center center no-repeat;
+  background: url('../images/Data.jpg') center center no-repeat;
   fill: url('#image2');
 }
 
@@ -67,7 +67,7 @@ h2 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
   opacity: 0.5;
-  background: url('images/People.jpg') top center no-repeat;
+  background: url('../images/People.jpg') top center no-repeat;
   fill: url('#image3');
 }
 

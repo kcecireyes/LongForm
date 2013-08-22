@@ -9,8 +9,11 @@ body{
 	margin-left: 40px;
 	height: 506px;
 }
-#barGraph{
+
+#timeline{
 	margin-top: 100px;
+	position: absolute;
+	top: 1150px;
 }
 .axis path, .axis line {
 	fill: none;
@@ -49,7 +52,7 @@ form {
   right: 0;
   left: 90px;
   margin: 0;
-  top: 600px;
+  top: 1200px;
 }
 label{
 	padding: 2px;

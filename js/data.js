@@ -33,7 +33,7 @@ d3.csv("data/total_faculty_timeline.csv", function (data) { //
   .style("fill", function (d,i) {return color(i) } )
   .attr("r", function(d,i){ return Math.sqrt(dataset[i]); })
   .attr("cx", function(d,i) { return i * 55; })
-	.attr("cy", function() { return  100; }); //Math.random() * 300;
+	.attr("cy", function() { return 200; }); //Math.random() * 300;
 
   // add a tooltip
   dot.call(d3.helper.tooltip()

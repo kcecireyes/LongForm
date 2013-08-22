@@ -12,7 +12,11 @@
 
 </head>
 <body>
-	<h2>Data</h2>
+	<h2>DATA</h2>
+	</div>
+	<div id="barGraph">
+		<p>Tenured faculty by nationality</p>
+	</div>
 	<div id="pie">
 		<p>Employees by Race</p>
 		<form>
@@ -26,13 +30,11 @@
 			<label><input type="radio" name="dataset" value="White"> White</label>
 			<label><input type="radio" name="dataset" value="Non_Resident"> Non_Resident</label>
 		</form>
-	</div>
-	<div id="barGraph">
-		
-	</div>
 	<br>
-	<p>Faculty by School</p>
-	<text> Mouse over the year to see faculty numbers change </text>	
+	<div id="timeline"> 
+		<p>Faculty by School</p>
+		<text> Mouse over the year to see faculty numbers change </text>	
+	</div>
 </body>
 
 <script type="text/javascript">	
@@ -82,7 +84,7 @@
 	.range([height, 0]);
 
 	var color3 = d3.scale.ordinal()
-	.range(["#BC8F8F", "#9370DB", "#E6E6FA", "#D8BFD8"]);
+	.range(["#008B8B", "#FFEFD5", "#FF4500", "#FF8C00"]);
 
 	var xAxis = d3.svg.axis()
 	.scale(x0)
