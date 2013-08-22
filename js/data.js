@@ -156,10 +156,6 @@ function loadData () {
 
 }
 
-function addTooltip () {
-  
-}
-
 function type(d) {
   d.Asian = +d.Asian;
   d.Black = +d.Black;
@@ -211,7 +207,13 @@ d3.csv("data/tenured_nationality.csv", function(error, data) {
     .data(data)
     .enter().append("g")
     .attr("class", "g")
-    .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; });
+    .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; })
+    .call(d3.helper.tooltip() // add a tooltip
+    .style({color: 'black'})
+    .text(function(d, i){ return d.State; })
+    )
+  .on('mouseover', function(d, i){ d3.select(this).style({opacity: '0.2'}); })
+  .on('mouseout', function(d, i){ d3.select(this).style({opacity: '1.0'}); });
 
     state.selectAll("rect")
     .data(function(d) { return d.ages; })
