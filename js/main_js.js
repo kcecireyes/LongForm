@@ -6,10 +6,12 @@ function resizedw(){
   console.log("you have resized your window");
   if (winWidth <= 400) {
     $(".topics").remove();
+    $(".abstract").hide();
     small();
   }
   else if (winWidth > 400 && winWidth < 900){
     $(".topics").remove();
+    $(".abstract").hide();
     $("svg").remove();
     medium();
   }
@@ -28,9 +30,6 @@ $(window).resize(function(){
   //}
 });
 
-
-// Footer open and close
-$(".footer").click(function () { $(".abstract").fadeToggle("slow", "linear"); });
 
 // In case the window size is less than or equal to 400 px
 function small() {

@@ -44,22 +44,25 @@
         </div> <!-- end of byline -->
         
       </div> <!-- end of title -->
-    </div> <!-- end of content -->
-    
-    <div class="footer">
+    </div> <!-- end of content -->    
+  </div> <!-- end of container -->
+   <div class="footer">
       <div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p></div>
     </div>  <!-- end of footer -->
 
-  </div> <!-- end of container -->
-
   <script type="text/javascript">
+
+  // Footer open and close
+    $(".footer").click(function () {
+    $(".abstract").fadeToggle("slow", "linear"); 
+    });
 
     $(document).ready(function() {
       $(".title").css("display", "none");
       $(".title").fadeIn(5000);
       resizedw();
-    });  
+      });  
 
-</script>
+  </script>
 </body>
 </html>
