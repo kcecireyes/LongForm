@@ -55,6 +55,26 @@ var overlay = svg.append("rect")
 .attr("height", box.height)
 .on("mouseover", enableInteraction);
 
+var keyColors = d3.scale.ordinal().range(["steelblue", "#F5DEB3", "#F08080"]);
+var key = svg.selectAll(".key")
+    .data(["Morningside Campus", "Graduate Schools", " Medical Schools"])
+    .enter().append("g")
+    .attr("class", "key")
+    .attr("transform", function(d, i) { return "translate(0," + (i*20+ 270) + ")"; });
+
+    key.append("rect")
+    .attr("x", 115)
+    .attr("width", 15)
+    .attr("height", 15)
+    .style("fill", keyColors);
+
+    key.append("text")
+    .attr("x", 100)
+    .attr("y", 6)
+    .attr("dy", ".55em")
+    .style("text-anchor", "end")
+    .text(function(d) { return d; });
+
 // Mouseover to change the year.
 function enableInteraction() {
   var yearScale = d3.scale.linear()

@@ -19,7 +19,6 @@ function resizedw(){
     big();
   };
 }
-
 var doIt;
 $(window).resize(function(){
   clearTimeout(doIt);
@@ -38,9 +37,9 @@ function small() {
   $(".content").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").css("background-color", "#3182bd").append('<div id="arrow" class="arrow-right1"></div>');
-  $("#topic1").hover(function() {
-    $(this).append('<h2>History</h2>'); 
-    $(".title").hide();
+  $("#topic1").hover(function() {    
+    $(this).append('<h2>History</h2>');    
+    $(".title").hide();  
   },
   function() {
     $(this).find("h2:last").remove();
@@ -49,6 +48,9 @@ function small() {
   $("#topic2").css("background-color", "#6baed6").append('<div id="arrow" class="arrow-right2"></div>');
   $("#topic2").hover(function() {
     $(this).append('<h2><a href="/data.html">Data</a></h2>'); 
+    $("#topic2").hammer().on("swipe", function(event) {
+      window.location.replace("/data.html");
+    }); 
     $(".title").hide();         
   },
   function() {
