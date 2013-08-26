@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/tooltip.js"></script>
-	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/pie.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	
 	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
@@ -38,7 +38,7 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
 width = 960 - margin.right,
 height = 500 - margin.top - margin.bottom;
 
-var svg2 = d3.select("#pie").append("svg")
+var svg = d3.select("#pie").append("svg")
 .attr("width", 960)
 .attr("height", 500)
 .attr("id", "pieSvg")
