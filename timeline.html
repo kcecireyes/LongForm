@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/tooltip.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="styles/data_style.css">
+	<title>Data Visualizations</title>
+
+</head>
+<body>
+	<h2>DATA</h2>
+	<div id="timeline"> 
+		<p>Faculty by School</p>
+		<text> Mouse over the year to see faculty numbers change </text>	
+	</div>
+</body>
+
+<script type="text/javascript">	
+
+// Chart dimensions.
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
+width = 960 - margin.right,
+height = 500 - margin.top - margin.bottom;
+
+// Create the SVG container and set the origin.
+var svg = d3.select("body").append("svg")
+.attr("width", width + margin.left + margin.right)
+.attr("height", height + margin.top + margin.bottom)
+.append("g")
+.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Add the year label; the value is set on transition.
+var label = svg.append("text")
+.attr("class", "year label")
+.attr("text-anchor", "end")
+.attr("y", height - 24)
+.attr("x", width)
+.text(2002);
+
+</script>
+</html>

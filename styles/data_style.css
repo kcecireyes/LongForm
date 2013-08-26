@@ -11,9 +11,8 @@ body{
 }
 
 #timeline{
-	margin-top: 100px;
 	position: absolute;
-	top: 1150px;
+	margin-top: 35px;
 }
 .axis path, .axis line {
 	fill: none;
@@ -47,12 +46,12 @@ text {
   	font: 15px 'Lato';
 }
 
-form {
-  position: absolute;
+form {	
   right: 0;
   left: 90px;
   margin: 0;
-  top: 1200px;
+  top: 600px;
+  position: absolute;
 }
 label{
 	padding: 2px;

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/tooltip.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="styles/data_style.css">
+	<title>Data Visualizations</title>
+
+</head>
+<body>
+	<h2>DATA</h2>
+	<div id="pie">
+		<p>Employees by Race</p>
+		<form>
+			<label><input type="radio" name="dataset" value="Asian" checked> Asian</label>
+			<label><input type="radio" name="dataset" value="Black"> Black</label>
+			<label><input type="radio" name="dataset" value="Hispanic"> Hispanic</label>
+			<label><input type="radio" name="dataset" value="Native"> American Indian/Alaska Native</label>
+			<label><input type="radio" name="dataset" value="Pacific"> Pacific Islander</label>
+			<label><input type="radio" name="dataset" value="Multiple"> Multiple</label>
+			<label><input type="radio" name="dataset" value="Undisclosed"> Undisclosed</label>
+			<label><input type="radio" name="dataset" value="White"> White</label>
+			<label><input type="radio" name="dataset" value="Non_Resident"> Non_Resident</label>
+		</form>
+	</div>
+
+</body>
+
+<script type="text/javascript">	
+// Pie chart dimensions
+
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
+width = 960 - margin.right,
+height = 500 - margin.top - margin.bottom;
+
+var svg2 = d3.select("#pie").append("svg")
+.attr("width", 960)
+.attr("height", 500)
+.attr("id", "pieSvg")
+.append("g")
+.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+</script>
+</html>
