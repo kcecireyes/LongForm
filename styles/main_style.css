@@ -1,6 +1,9 @@
 html {
   font-family: 'Lato';
   margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  
 }
 
 a{ color: white; text-decoration: none; }

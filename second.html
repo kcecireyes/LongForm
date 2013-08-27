@@ -5,17 +5,64 @@
 	<script type="text/javascript" src="js/tooltip.js"></script>
 	<script type="text/javascript" src="js/data.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	
+    <script src="js/phew.min.js"></script>
+
+<!-- 	// <script type="text/javascript" src="js/main_js.js"></script> -->
+  
+	<link rel="stylesheet" type="text/css" href="styles/main_style.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="styles/data_style.css">
 	<title>Data Visualizations</title>
 
 </head>
+<style>
+
+    #root{
+        height: 900px;
+    }
+
+    .content{ 
+        width: 1000px;
+        height: 1200px;
+    }
+</style>
 <body>
-	<div id="barGraph">
+<div id="root">
+	<div class="content">
+		<div id="header"> 
+			<a href="http://www.columbiaspectator.com/">
+				<img id="spec_logo" src="images/spec_logo.svg"> 
+			</a>  
+			<a target="_blank" href="https://www.facebook.com/columbiaspectator">
+				<img id="facebook" src="images/facebook.svg">
+			</a>
+			<a target="_blank" href="https://twitter.com/ColumbiaSpec">
+				<img id="twitter" src="images/twitter.svg">
+			</a>
+			<img id="google_plus" src="images/google_plus.svg">
+		</div> <!-- end of header -->  
+
+		<div class="meat"> 
+			<div class="title">
+				<h1>THE</h1>
+				<h1>TENURE</h1>
+				<h1>PROCESS</h1>
+				<div id="byline">
+					<p>Cecilia Reyes</p>
+				</div> 
+			</div> <!-- end of title -->
+		</div> <!-- end of meat -->
+		<div class="footer">
+			<div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p>
+			</div>
+		</div>  <!-- end of footer -->
+	</div> <!-- end of container -->
+
+	<div class="content" id="barGraph">
 		<p>Tenured faculty by nationality</p>
 	</div>
-	<div id="pie">
+
+	<div class="content" id="pie">
 		<p>Employees by Race</p>
 		<form>
 			<label><input type="radio" name="dataset" value="Asian" checked> Asian</label>
@@ -29,14 +76,24 @@
 			<label><input type="radio" name="dataset" value="Non_Resident"> Non_Resident</label>
 		</form>
 	</div>	
-	<div id="timeline"> 
+
+	<div class="content" id="timeline"> 
 		<p>Faculty by School</p>
 		<text> Mouse over the year to see faculty numbers change </text>	
 	</div>
+</div>
 
 </body>
 
 <script type="text/javascript">	
+
+    new Container({'height': 900}).attach('root').horizontify($('.content'));
+
+	$(document).ready(function() {
+      $(".title").css("display", "none");
+      $(".title").fadeIn(5000);
+      // resizedw();
+    	});
 
 	// Chart dimensions.
 	var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
@@ -44,7 +101,7 @@
 	height = 500 - margin.top - margin.bottom;
 
 	// Create the SVG container and set the origin.
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select("#timeline").append("svg")
 	.attr("width", width + margin.left + margin.right)
 	.attr("height", height + margin.top + margin.bottom)
 	.append("g")

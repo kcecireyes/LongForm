@@ -35,7 +35,7 @@ $(".footer").click(function () { $(".abstract").fadeToggle("slow", "linear"); })
 
 // In case the window size is less than or equal to 400 px
 function small() {
-  $(".content").append('<div class=topics></div>')
+  $(".meat").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").css("background-color", "#3182bd").append('<div id="arrow" class="arrow-right1"></div>');
   $("#topic1").hover(function() {
@@ -68,7 +68,7 @@ function small() {
 
 // If the window size is between 401 and 899
 function medium() {
-  $(".content").append('<div class=topics></div>')
+  $(".meat").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").hover(function() {
     $(this).append('<h2>History</h2>'); 
@@ -97,6 +97,7 @@ function big(){
 
   var nodes = d3.range(4).map(function() { return {radius: 90 }; }),
   color = d3.scale.category20c();  
+  
   var force = d3.layout.force()
   .gravity(0.05)
   .charge(function(d, i) { return i ? 0 : -2000; })
@@ -111,7 +112,7 @@ function big(){
 
   var urls = ["History", "Data", "People"];
 
-  var svg = d3.select(".content").append("svg:svg")
+  var svg_m = d3.select(".meat").append("svg:svg")
   .attr("width", w)
   .attr("height", h);
 
@@ -121,7 +122,7 @@ function big(){
 
   // $("#topic1").hover(function() {$(this).css("fill", "url('#image');"); });
 
-  svg.selectAll("circle")
+  svg_m.selectAll("circle")
   .data(nodes.slice(1))
   .enter()
   .append("svg:circle")
@@ -139,13 +140,13 @@ function big(){
 
     var y = [180, 360, 500];
 
-    svg.selectAll("circle")
+    svg_m.selectAll("circle")
     .attr("cx", function(d,i) { return d.x; })
     .attr("cy", function(d,i) { return y[i]; })
     .attr("id", function(d,i) { return "topic" + (i+1); });
   });
 
-  svg.on("mousemove", function() {
+  svg_m.on("mousemove", function() {
     var p1 = d3.svg.mouse(this);
     root.px = p1[0];
     root.py = p1[1];
