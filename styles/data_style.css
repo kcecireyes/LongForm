@@ -6,6 +6,15 @@ p{
 	font-size: 120%;
 }
 
+.trac{
+	fill: #DCDCDC;
+	stroke: white;
+}
+
+.adhoc{
+	fill: steelBlue;
+	stroke: none;
+}
 #timeline{
 }
 
