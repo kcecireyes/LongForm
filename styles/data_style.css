@@ -5,7 +5,12 @@ html,p,h2{
 p{
 	font-size: 120%;
 }
-
+.content{
+	margin-right: 100px;
+	top:0; bottom:0; left:0; right:0; 
+    width: 1000px;
+    height: 1200px;
+}
 .trac{
 	fill: #DCDCDC;
 	stroke: white;

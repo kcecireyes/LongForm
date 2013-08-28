@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0" >
+
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/tooltip.js"></script>
 	<script type="text/javascript" src="js/data.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="js/phew.min.js"></script>
 
-<!-- 	// <script type="text/javascript" src="js/main_js.js"></script> -->
+	<script type="text/javascript" src="js/main_js.js"></script>
   
 	<link rel="stylesheet" type="text/css" href="styles/main_style.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
@@ -15,17 +17,6 @@
 	<title>Data Visualizations</title>
 
 </head>
-<style>
-
-    #root{
-        height: 900px;
-    }
-
-    .content{ 
-        width: 1000px;
-        height: 1200px;
-    }
-</style>
 <body>
 <div id="root">
 	<div class="content">
@@ -96,9 +87,11 @@
     new Container({'height': 900}).attach('root').horizontify($('.content'));
 
 	$(document).ready(function() {
+	  $("#i2").remove();
+	  $("#i3").remove();	
       $(".title").css("display", "none");
       $(".title").fadeIn(5000);
-      // resizedw();
+      //resizedw();
     	});
 
 	// Chart dimensions.
@@ -167,20 +160,17 @@
 
 	var tracData = [96.0, 94.1, 100.0, 72.7, 91.2];
 	var adhocData = [94.1, 96.3, 96.4, 92.9, 94.6];
-
-	var m = {top: 5, right: 40, bottom: 20, left: 120},
-    	widthB = 960 - m.left - m.right,
-    	heightB = 50 - m.top - m.bottom;
+    var schoolNames = ["Arts and Sciences", "MoHi graduate", "Barnard", "CUMC", "total"];
 
 	var bulletX = d3.scale.linear()
      	.domain([0, d3.max(tracData)])
     	.range([0, 420]);
 
 	var svgB = d3.select("#bullet").append("svg")
-		.attr("width", 1000)
-		.attr("height", 840)
-		.append("g")
-		.attr("transform","translate(350, 100)");
+    .attr("width", 900)
+    .attr("height", 840)
+    .append("g")
+    .attr("transform","translate(180, 80)");
 
 	var bulletY = d3.scale.ordinal()
     	.domain(tracData)
@@ -207,22 +197,11 @@
      	.data(tracData)
    		.enter().append("text")
      	.attr("x", bulletX)
-     	.attr("y", function(d,i) { return (i*100) + 15; })
-	    .attr("dx", -3) // padding-right
-     	.attr("dy", ".35em") // vertical-align: middle
+     	.attr("y", function(d,i) { return (i*100) + 25; })
+	    .attr("dx", 25) 
+     	.attr("dy", ".35em") 
      	.attr("text-anchor", "end") // text-align: right
      	.text(String);
-
-    // svgB.selectAll("line")
-    //  	.data(bulletX.ticks(10))
-   	// 	.enter().append("line")
-    //  	.attr("x1", bulletX)
-    //  	.attr("x2", bulletX)
-    //  	.attr("y1", 0)
-    // 	.attr("y2", 480)
-    //  	.style("stroke", "#ccc"); 	
-
-    var schoolNames = ["Arts and Sciences", "MoHi graduate", "Barnard", "CUMC", "total"];
 
     svgB.selectAll(".schoolNames")
     	.data(schoolNames)

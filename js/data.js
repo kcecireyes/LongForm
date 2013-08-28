@@ -262,5 +262,4 @@ d3.csv("data/tenured_nationality.csv", function(error, data) {
     .attr("dy", ".35em")
     .style("text-anchor", "end")
     .text(function(d) { return d; });
-
   });		
