@@ -2,7 +2,7 @@
 var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
 function resizedw(){
-  var winWidth = $(window).width();
+  var winWidth = $("#mainDiv").width();
   console.log("you have resized your window");
   if (winWidth <= 400) {
     $(".topics").remove();
@@ -24,6 +24,7 @@ function resizedw(){
 var doIt;
 $(window).resize(function(){
   clearTimeout(doIt);
+  console.log("div width " + $("#mainDiv").width());
   // if ($(window).width() <= 900){
     //console.log("do i work?");
     doIt = setTimeout(resizedw, 100);
@@ -46,9 +47,9 @@ function small() {
   });            
   $("#topic2").css("background-color", "#6baed6").append('<div id="arrow" class="arrow-right2"></div>');
   $("#topic2").hover(function() {
-    $(this).append('<h2><a href="/timeline.html">Data</a></h2>'); 
+    $(this).append('<h2><a class="smoothScroll" href="#timeline">Data</a></h2>'); 
     $("#topic2").hammer().on("swipe", function(event) {
-      window.location.replace("/timeline.html");
+      window.location.replace("#timeline");
     }); 
     $(".title").hide();         
   },
@@ -78,7 +79,7 @@ function medium() {
     $(this).find("h2:last").remove();
   });            
   $("#topic2").hover(function() {
-    $(this).append('<h2><a href="/timeline.html">Data</a></h2>');          
+    $(this).append('<h2><a class="smoothScroll" href="#barGraph">Data</a></h2>');          
   },
   function() {
     $(this).find("h2:last").remove();

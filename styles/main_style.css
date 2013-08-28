@@ -199,7 +199,7 @@ Medium sized screen media
 
   .title {
     width: 100%;
-    position: fixed;
+    position: absolute;
     text-align: left;
     right: 45%;
     left: 10%;

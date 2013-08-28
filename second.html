@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/smoothscroll.js"></script>
 	<script type="text/javascript" src="js/tooltip.js"></script>
 	<script type="text/javascript" src="js/data.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="js/phew.min.js"></script>
-
 	<script type="text/javascript" src="js/main_js.js"></script>
   
 	<link rel="stylesheet" type="text/css" href="styles/main_style.css">
@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="root">
-	<div class="content">
+	<div class="content" id="mainDiv" style="width: 20%; position: fixed;">
 		<div id="header"> 
 			<a href="http://www.columbiaspectator.com/">
 				<img id="spec_logo" src="images/spec_logo.svg"> 
@@ -84,11 +84,14 @@
 
 <script type="text/javascript">	
 
-    new Container({'height': 900}).attach('root').horizontify($('.content'));
+    new Container({'height': "900"}).attach('root').horizontify($('.content'));
 
-	$(document).ready(function() {
-	  $("#i2").remove();
-	  $("#i3").remove();	
+    $(document).ready(function() {
+      $("#i2").remove();
+	  $("#i3").remove();
+    });
+
+	$(document).ready(function() {	
       $(".title").css("display", "none");
       $(".title").fadeIn(5000);
       //resizedw();
