@@ -5,15 +5,26 @@ html,p,h2{
 p{
 	font-size: 120%;
 }
-body{
-	margin-left: 40px;
-	height: 506px;
+.content{
+	margin-right: 100px;
+	top:0; bottom:0; left:0; right:0; 
+    width: 1000px;
+    height: 1200px;
+}
+.trac{
+	fill: #DCDCDC;
+	stroke: white;
 }
 
+.adhoc{
+	fill: steelBlue;
+	stroke: none;
+}
 #timeline{
 	position: absolute;
 	margin-top: 35px;
 }
+
 .axis path, .axis line {
 	fill: none;
 	stroke: #000;
@@ -46,12 +57,10 @@ text {
   	font: 15px 'Lato';
 }
 
-form {	
-  right: 0;
-  left: 90px;
-  margin: 0;
-  top: 600px;
+form {
   position: absolute;
+  padding-left: 5px;
+  top: 600px;
 }
 label{
 	padding: 2px;
