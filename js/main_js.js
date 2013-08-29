@@ -2,17 +2,21 @@
 var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
 function resizedw(){
-  var winWidth = $("#mainDiv").width();
-  console.log("you have resized your window");
-  if (winWidth <= 400) {
+  var winWidth = $(window).width();
+  $(".content").width(winWidth);
+  $("#i1").width(winWidth*5)
+
+  var divWidth = $("#mainDiv").width();
+
+  if (divWidth <= 400) {
     $(".topics").remove();
     $(".abstract").hide();
     small();
   }
-  else if (winWidth > 400 && winWidth < 900){
+  else if (divWidth > 400 && divWidth < 900){
     $(".topics").remove();
     $(".abstract").hide();
-    $("svg").remove();
+    $(".circleSVG").remove();
     medium();
   }
   else{
