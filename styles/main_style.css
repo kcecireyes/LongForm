@@ -103,7 +103,7 @@ h2 {
   filter: alpha(opacity=70);
   opacity: 1.0;
   clear: both;
-  position: absolute; height: 10%; width: 100%; bottom: 0px; left: 0px;
+  position: absolute; height: 5%; width: 100%; bottom: 0px; left: 0px;
 }
 
 .abstract {

@@ -43,10 +43,6 @@
 				</div> 
 			</div> <!-- end of title -->
 		</div> <!-- end of meat -->
-		<div class="footer">
-			<div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p>
-			</div>
-		</div>  <!-- end of footer -->
 	</div> <!-- end of container -->
 
 	<div class="content" id="barGraph">
@@ -78,6 +74,11 @@
 		<text> % of tenure granted per school</text>
 	</div>
 
+	<div class="footer">
+		<div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p>
+		</div>
+	</div>  <!-- end of footer -->
+
 </div>
 
 </body>
@@ -98,6 +99,12 @@
       $(".title").fadeIn(5000);
       resizedw();
 	  });
+
+	$(".footer").click(function () {
+		console.log("this was clicked")
+		$(".abstract").fadeToggle("slow", "linear"); 
+		$(".footer").animate({height: "13%"},500);			
+	});
 
 	// Chart dimensions.
 	var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
