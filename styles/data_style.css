@@ -6,16 +6,40 @@ p{
 	font-size: 120%;
 }
 
-.root{
-	width: 100%;
+circle{
+	stroke: none;
 }
 
-.content{
+text {
+  	font: 15px 'Lato';
+}
+
+form {
+  position: absolute;
+  padding-left: 5px;
+  top: 600px;
+}
+
+label{
+	padding: 2px;
+}
+
+.root{
+	position: relative;
 	float: left;
-	margin-right: 100px;
-	top:0; bottom:0; left:0; right:0; 
-    width: 1000px;
-    height: 1200px;
+	width: 1300px;
+}
+
+.i0,.i1{
+	float: left;
+	width: auto;
+}
+.content{
+/*	float: left;
+*/	/*margin-right: 100px;
+	top:0; bottom:0; left:0; right:0; */
+    width: 25%;
+    height: 100%;
     border: 1px solid red;
 }
 
@@ -53,20 +77,3 @@ p{
 	pointer-events: all;
 	cursor: ew-resize;
 }
-circle{
-	stroke: none;
-}
-
-text {
-  	font: 15px 'Lato';
-}
-
-form {
-  position: absolute;
-  padding-left: 5px;
-  top: 600px;
-}
-label{
-	padding: 2px;
-}
-
