@@ -1,3 +1,4 @@
+var state = null;
 
 var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
@@ -19,10 +20,9 @@ function resizedw(){
     $(".circleSVG").remove();
     medium();
   }
-  else{
+  else if(state != "big"){
     $(".topics").remove();
     $(".circleSVG").remove();
-    // $("svg").remove();
     big();
   };
 }
@@ -39,6 +39,7 @@ $(window).resize(function(){
 
 // In case the window size is less than or equal to 400 px
 function small() {
+  state = "small";
   $(".meat").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").css("background-color", "#3182bd").append('<div id="arrow" class="arrow-right1"></div>');
@@ -75,6 +76,7 @@ function small() {
 
 // If the window size is between 401 and 899
 function medium() {
+  state = "medium"
   $(".meat").append('<div class=topics></div>')
   $(".topics").append(divs);
   $("#topic1").hover(function() {
@@ -98,7 +100,8 @@ function medium() {
 }  
 
 // If the window size is greater than 900
-function big(){  
+function big(){ 
+  state = "big"; 
   var w = 1200,
   h = 600;
 
