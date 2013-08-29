@@ -17,7 +17,8 @@ function resizedw(){
   }
   else{
     $(".topics").remove();
-    $("svg").remove();
+    $(".circleSVG").remove();
+    // $("svg").remove();
     big();
   };
 }
@@ -115,6 +116,7 @@ function big(){
   var urls = ["History", "Data", "People"];
 
   var svg_m = d3.select(".meat").append("svg:svg")
+  .attr("class", "circleSVG")
   .attr("width", w)
   .attr("height", h);
 
