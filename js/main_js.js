@@ -5,6 +5,10 @@ var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div
 function resizedw(){
   var winWidth = $(window).width();
   $(".content").width(winWidth);
+  $(".content").children("svg").each(function (d, obj){
+    console.log(this)
+    $(this).attr("width", winWidth);
+  });
   $("#i1").width(winWidth*5)
 
   var divWidth = $("#mainDiv").width();
@@ -17,19 +21,18 @@ function resizedw(){
   else if (divWidth > 400 && divWidth < 900){
     $(".topics").remove();
     $(".abstract").hide();
-    $(".circleSVG").remove();
+    $("#circleSVG").remove();
     medium();
   }
   else if(state != "big"){
     $(".topics").remove();
-    $(".circleSVG").remove();
+    $("#circleSVG").remove();
     big();
   };
 }
 var doIt;
 $(window).resize(function(){
   clearTimeout(doIt);
-  console.log("div width " + $("#mainDiv").width());
   // if ($(window).width() <= 900){
     //console.log("do i work?");
     doIt = setTimeout(resizedw, 100);
@@ -122,10 +125,7 @@ function big(){
 
   var urls = ["History", "Data", "People"];
 
-  var svg_m = d3.select(".meat").append("svg:svg")
-  .attr("class", "circleSVG")
-  .attr("width", w)
-  .attr("height", h);
+  var svg_m = d3.select("svg");
 
   $("svg").append("<defs></defs>");
   $("defs").append("<pattern id='image' patternUnits='userSpaceOnUse' width='6' height='6' x='0' y='0'></pattern>");
@@ -137,9 +137,7 @@ function big(){
   .data(nodes.slice(1))
   .enter()
   .append("svg:circle")
-  .attr("r", function(d) { return d.radius - 2; })
-  .style("fill", function(d, i) { return color(i % 3); }); //color(i % 3)
-
+  .attr("r", function(d) { return d.radius - 2; });
   force.on("tick", function(e) {
     var q = d3.geom.quadtree(nodes),
     i = 0,

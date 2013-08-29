@@ -204,7 +204,7 @@ function arcTween(a) {
 
 d3.csv("data/tenured_nationality.csv", function(error, data) {
     var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
-
+    
     data.forEach(function(d) {
       d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
     });

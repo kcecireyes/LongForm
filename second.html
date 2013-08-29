@@ -1,246 +1,265 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
-	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="js/smoothscroll.js"></script>
-	<script type="text/javascript" src="js/tooltip.js"></script>
-	<script type="text/javascript" src="js/data.js"></script>
-    <script type="text/javascript" src="js/phew.min.js"></script>
-	<script type="text/javascript" src="js/main_js.js"></script>
-  
-	<link rel="stylesheet" type="text/css" href="styles/main_style.css">
-	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="styles/data_style.css">
-	<title>Data Visualizations</title>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/smoothscroll.js"></script>
+		<script type="text/javascript" src="js/tooltip.js"></script>
+		<script type="text/javascript" src="js/data.js"></script>
+	    <script type="text/javascript" src="js/phew.min.js"></script>
+		<script type="text/javascript" src="js/main_js.js"></script>
+	  
+		<link rel="stylesheet" type="text/css" href="styles/main_style.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="styles/data_style.css">
+		<title>Data Visualizations</title>
+	</head>
+	<body>
+	<div id="root">
+		<div class="content" id="mainDiv">
+			<div id="header"> 
+				<a href="http://www.columbiaspectator.com/">
+					<img id="spec_logo" src="images/spec_logo.svg"> 
+				</a>  
+				<a target="_blank" href="https://www.facebook.com/columbiaspectator">
+					<img id="facebook" src="images/facebook.svg">
+				</a>
+				<a target="_blank" href="https://twitter.com/ColumbiaSpec">
+					<img id="twitter" src="images/twitter.svg">
+				</a>
+				<img id="google_plus" src="images/google_plus.svg">
+			</div> <!-- end of header -->  
 
-</head>
-<body>
-<div id="root">
-	<div class="content" id="mainDiv">
-		<div id="header"> 
-			<a href="http://www.columbiaspectator.com/">
-				<img id="spec_logo" src="images/spec_logo.svg"> 
-			</a>  
-			<a target="_blank" href="https://www.facebook.com/columbiaspectator">
-				<img id="facebook" src="images/facebook.svg">
-			</a>
-			<a target="_blank" href="https://twitter.com/ColumbiaSpec">
-				<img id="twitter" src="images/twitter.svg">
-			</a>
-			<img id="google_plus" src="images/google_plus.svg">
-		</div> <!-- end of header -->  
+			<div class="meat"> 
+				<div class="title">
+					<h1>THE</h1>
+					<h1>TENURE</h1>
+					<h1>PROCESS</h1>
+					<div id="byline">
+						<p>Cecilia Reyes</p>
+					</div> 
+				</div> <!-- end of title -->
 
-		<div class="meat"> 
-			<div class="title">
-				<h1>THE</h1>
-				<h1>TENURE</h1>
-				<h1>PROCESS</h1>
-				<div id="byline">
-					<p>Cecilia Reyes</p>
-				</div> 
-			</div> <!-- end of title -->
-		</div> <!-- end of meat -->
-	</div> <!-- end of container -->
+				<svg class="circleSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" version="1.1" baseProfile="full">
+					<defs xmlns="http://www.w3.org/2000/svg">
+						<pattern id="image" patternUnits="userSpaceOnUse" width="273" height="210">
+							<image xlink:href="images/History.jpg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="273" height="210"></image>
+						</pattern>
+					</defs>
+				</svg>
 
-	<div class="content" id="barGraph">
-		<p>Tenured faculty by nationality</p>
-	</div>
+			</div> <!-- end of meat -->
+		</div> <!-- end of container -->
 
-	<div class="content" id="pie">
-		<p>Employees by Race</p>
-		<form>
-			<label><input type="radio" name="dataset" value="Asian" checked> Asian</label>
-			<label><input type="radio" name="dataset" value="Black"> Black</label>
-			<label><input type="radio" name="dataset" value="Hispanic"> Hispanic</label>
-			<label><input type="radio" name="dataset" value="Native"> American Indian/Alaska Native</label>
-			<label><input type="radio" name="dataset" value="Pacific"> Pacific Islander</label>
-			<label><input type="radio" name="dataset" value="Multiple"> Multiple</label>
-			<label><input type="radio" name="dataset" value="Undisclosed"> Undisclosed</label>
-			<label><input type="radio" name="dataset" value="White"> White</label>
-			<label><input type="radio" name="dataset" value="Non_Resident"> Non_Resident</label>
-		</form>
-	</div>	
-
-	<div class="content" id="timeline"> 
-		<p>Faculty by School</p>
-		<text> Mouse over the year to see faculty numbers change </text>	
-	</div>
-
-	<div class="content" id="bullet">
-		<p>TRAC vs. Ad-Hoc perfomance</p>
-		<text> % of tenure granted per school</text>
-	</div>
-
-	<div class="footer">
-		<div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p>
+		<div class="content" id="barGraph">
+			<p>Tenured faculty by nationality</p>
 		</div>
-	</div>  <!-- end of footer -->
 
-</div>
+		<div class="content" id="pie">
+			<p>Employees by Race</p>
+			<form>
+				<label><input type="radio" name="dataset" value="Asian" checked> Asian</label>
+				<label><input type="radio" name="dataset" value="Black"> Black</label>
+				<label><input type="radio" name="dataset" value="Hispanic"> Hispanic</label>
+				<label><input type="radio" name="dataset" value="Native"> American Indian/Alaska Native</label>
+				<label><input type="radio" name="dataset" value="Pacific"> Pacific Islander</label>
+				<label><input type="radio" name="dataset" value="Multiple"> Multiple</label>
+				<label><input type="radio" name="dataset" value="Undisclosed"> Undisclosed</label>
+				<label><input type="radio" name="dataset" value="White"> White</label>
+				<label><input type="radio" name="dataset" value="Non_Resident"> Non_Resident</label>
+			</form>
+		</div>	
 
-</body>
+		<div class="content" id="timeline"> 
+			<p>Faculty by School</p>
+			<text> Mouse over the year to see faculty numbers change </text>	
+		</div>
 
-<script type="text/javascript">	
+		<div class="content" id="bullet">
+			<p>TRAC vs. Ad-Hoc perfomance</p>
+			<text> % of tenure granted per school</text>
+		</div>
 
-    new Container({'height': 900}).attach('root').horizontify($('.content'));
+		<div class="footer">
+			<div class="abstract"><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales sapien vel felis tempor, porttitor tincidunt magna pharetra. Duis dignissim augue eget massa fringilla eleifend. </p>
+			</div>
+		</div>  <!-- end of footer -->
 
-    $("#i1").css("width","auto");
+	</div>
 
-    $(document).ready(function() {
-      $("#i2").remove();
-	  $("#i3").remove();
-    });
+	</body>
 
-	$(document).ready(function() {	
-      $(".title").css("display", "none");
-      $(".title").fadeIn(5000);
-      resizedw();
-	  });
+	<script type="text/javascript">	
 
-	$(".footer").click(function () {
-		console.log("this was clicked")
-		$(".abstract").fadeToggle("slow", "linear"); 
-		$(".footer").animate({height: "13%"},500);			
-	});
+	    new Container({'height': 900}).attach('root').horizontify($('.content'));
 
-	// Chart dimensions.
-	var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
-	width = 960 - margin.right,
-	height = 500 - margin.top - margin.bottom;
+	    $("#i1").css("width","auto");
 
-	// Create the SVG container and set the origin.
-	var svg = d3.select("#timeline").append("svg")
-	.attr("width", width + margin.left + margin.right)
-	.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	    $(document).ready(function() {
+	      $("#i2").remove();
+		  $("#i3").remove();
+	    });
 
-	// Add the year label; the value is set on transition.
-	var label = svg.append("text")
-	.attr("class", "year label")
-	.attr("text-anchor", "end")
-	.attr("y", height - 24)
-	.attr("x", width)
-	.text(2002);
+		$(document).ready(function() {	
+	      $(".title").css("display", "none");
+	      $(".title").fadeIn(5000);
+	      resizedw();
+		  });
 
-	// Pie chart dimensions
+		$(".footer").click(function () {
+			// fh = (".footer").height();
+			// wh = $(window).height();
+			// console.log("this was clicked")
+			// console.log($(".footer").height()/$(window).height())
+			if( ($(".footer").height()/$(window).height()) < .1){
+				$(".abstract").fadeToggle("slow", "linear"); 
+				$(".footer").animate({height: "13%"},500);	
+				$("#barSVG").attr("width", 400)	
+				console.log()	
+			}
+			else{
+				$(".abstract").fadeToggle("slow", "linear"); 
+				$(".footer").animate({height: "5%"},500);	
+			}
+		});
 
-	var svg2 = d3.select("#pie").append("svg")
-	.attr("width", 960)
-	.attr("height", 500)
-	.attr("id", "pieSvg")
-	.append("g")
-	.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+		// Chart dimensions.
+		var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
+		width = $(window).width() - margin.right,
+		height = 500 - margin.top - margin.bottom;
 
-	// BAR GRAPH
+		// Create the SVG container and set the origin.
+		var svg = d3.select("#timeline").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	var margin2 = {top: 20, right: 20, bottom: 30, left: 40},
-	width = 960 - margin2.left - margin2.right,
-	height = 500 - margin2.top - margin2.bottom;
+		// Add the year label; the value is set on transition.
+		var label = svg.append("text")
+		.attr("class", "year label")
+		.attr("text-anchor", "end")
+		.attr("y", height - 24)
+		.attr("x", width)
+		.text(2002);
 
-	var x0 = d3.scale.ordinal()
-	.rangeRoundBands([0, width], .1);
+		// Pie chart dimensions
 
-	var x1 = d3.scale.ordinal();
+		var svg2 = d3.select("#pie").append("svg")
+		.attr("width", $(window).width())
+		.attr("height", 500)
+		.attr("id", "pieSvg")
+		.append("g")
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-	var y = d3.scale.linear()
-	.range([height, 0]);
+		// BAR GRAPH
 
-	var color3 = d3.scale.ordinal()
-	.range(["#008B8B", "#FFEFD5", "#FF4500", "#FF8C00"]);
+		var margin2 = {top: 20, right: 20, bottom: 30, left: 40},
+		width = $(window).width()*.9 - margin2.left - margin2.right,
+		height = 500 - margin2.top - margin2.bottom;
 
-	var xAxis = d3.svg.axis()
-	.scale(x0)
-	.orient("bottom");
+		var x0 = d3.scale.ordinal()
+		.rangeRoundBands([0, width], .1);
 
-	var yAxis = d3.svg.axis()
-	.scale(y)
-	.orient("left")
-	.tickValues([20,40,60,80,100,120])
-	.tickFormat(d3.format(".2s"));
+		var x1 = d3.scale.ordinal();
 
-	var svg3 = d3.select("#barGraph").append("svg")
-	.attr("width", width + margin2.left + margin2.right)
-	.attr("height", height + margin2.top + margin2.bottom)
-	.append("g")
-	.attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+		var y = d3.scale.linear()
+		.range([height, 0]);
 
-	//Bullet Chart
+		var color3 = d3.scale.ordinal()
+		.range(["#008B8B", "#FFEFD5", "#FF4500", "#FF8C00"]);
 
-	var tracData = [96.0, 94.1, 100.0, 72.7, 91.2];
-	var adhocData = [94.1, 96.3, 96.4, 92.9, 94.6];
-    var schoolNames = ["Arts and Sciences", "MoHi graduate", "Barnard", "CUMC", "total"];
+		var xAxis = d3.svg.axis()
+		.scale(x0)
+		.orient("bottom");
 
-	var bulletX = d3.scale.linear()
-     	.domain([0, d3.max(tracData)])
-    	.range([0, 420]);
+		var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left")
+		.tickValues([20,40,60,80,100,120])
+		.tickFormat(d3.format(".2s"));
 
-	var svgB = d3.select("#bullet").append("svg")
-    .attr("width", 900)
-    .attr("height", 840)
-    .append("g")
-    .attr("transform","translate(180, 80)");
+		var svg3 = d3.select("#barGraph").append("svg")
+		.attr("width", width + margin2.left + margin2.right)
+		.attr("height", height + margin2.top + margin2.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-	var bulletY = d3.scale.ordinal()
-    	.domain(tracData)
-     	.rangeBands([0, 120]);
+		//Bullet Chart
 
-	svgB.selectAll("rect")
-     	.data(tracData)	 
-	    .enter().append("rect")
-	    .attr("class", "trac")
-    	.attr("y", function(d,i){ return i*100; })
-    	.attr("width", bulletX)
-	    .attr("height", 50); //bulletY.rangeBand()
+		var tracData = [96.0, 94.1, 100.0, 72.7, 91.2];
+		var adhocData = [94.1, 96.3, 96.4, 92.9, 94.6];
+	    var schoolNames = ["Arts and Sciences", "MoHi graduate", "Barnard", "CUMC", "total"];
 
-	svgB.append("g")
-		.selectAll("rect")
-     	.data(adhocData)	 
-	    .enter().append("rect")
-	    .attr("class", "adhoc")
-    	.attr("y", function(d,i){ return (i*100) + 15; })
-    	.attr("width", bulletX)
-	    .attr("height", (bulletY.rangeBand())-5 ); //bulletY.rangeBand()    
+		var bulletX = d3.scale.linear()
+	     	.domain([0, d3.max(tracData)])
+	    	.range([0, 420]);
 
-	svgB.selectAll("text")
-     	.data(tracData)
-   		.enter().append("text")
-     	.attr("x", bulletX)
-     	.attr("y", function(d,i) { return (i*100) + 25; })
-	    .attr("dx", 25) 
-     	.attr("dy", ".35em") 
-     	.attr("text-anchor", "end") // text-align: right
-     	.text(String);
+		var svgB = d3.select("#bullet").append("svg")
+	    .attr("width", $(window).width())
+	    .attr("height", 840)
+	    .append("g")
+	    .attr("transform","translate(180, 80)");
 
-    svgB.selectAll(".schoolNames")
-    	.data(schoolNames)
-    	.enter().append("text")
-    	.attr("class", "schoolNames")
-    	.attr("x", "-10")
-    	.attr("y", function(d,i){ return (i*100) + 30; })
-    	.style("text-anchor", "end")
-    	.style("font-weight", "bold")
-      	.text(String);
+		var bulletY = d3.scale.ordinal()
+	    	.domain(tracData)
+	     	.rangeBands([0, 120]);
 
- 	svgB.selectAll(".rule")
-     	.data(bulletX.ticks(10))
-   		.enter().append("text")
-    	.attr("class", "rule")
-     	.attr("x", bulletX)
-     	.attr("y", 0)
-     	.attr("dy", 495)
-     	.attr("text-anchor", "middle")
-     	.style("fill", "black")
-     	.text(String);
+		svgB.selectAll("rect")
+	     	.data(tracData)	 
+		    .enter().append("rect")
+		    .attr("class", "trac")
+	    	.attr("y", function(d,i){ return i*100; })
+	    	.attr("width", bulletX)
+		    .attr("height", 50); //bulletY.rangeBand()
 
-    svgB.append("line")
-	    .attr("y1", 0)
-    	.attr("y2", 480)
-     	.style("stroke", "black");
+		svgB.append("g")
+			.selectAll("rect")
+	     	.data(adhocData)	 
+		    .enter().append("rect")
+		    .attr("class", "adhoc")
+	    	.attr("y", function(d,i){ return (i*100) + 15; })
+	    	.attr("width", bulletX)
+		    .attr("height", (bulletY.rangeBand())-5 ); //bulletY.rangeBand()    
+
+		svgB.selectAll("text")
+	     	.data(tracData)
+	   		.enter().append("text")
+	     	.attr("x", bulletX)
+	     	.attr("y", function(d,i) { return (i*100) + 25; })
+		    .attr("dx", 25) 
+	     	.attr("dy", ".35em") 
+	     	.attr("text-anchor", "end") // text-align: right
+	     	.text(String);
+
+	    svgB.selectAll(".schoolNames")
+	    	.data(schoolNames)
+	    	.enter().append("text")
+	    	.attr("class", "schoolNames")
+	    	.attr("x", "-10")
+	    	.attr("y", function(d,i){ return (i*100) + 30; })
+	    	.style("text-anchor", "end")
+	    	.style("font-weight", "bold")
+	      	.text(String);
+
+	 	svgB.selectAll(".rule")
+	     	.data(bulletX.ticks(10))
+	   		.enter().append("text")
+	    	.attr("class", "rule")
+	     	.attr("x", bulletX)
+	     	.attr("y", 0)
+	     	.attr("dy", 495)
+	     	.attr("text-anchor", "middle")
+	     	.style("fill", "black")
+	     	.text(String);
+
+	    svgB.append("line")
+		    .attr("y1", 0)
+	    	.attr("y2", 480)
+	     	.style("stroke", "black");
 
 
-</script>
+	</script>
 </html>
