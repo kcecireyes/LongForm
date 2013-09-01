@@ -1,6 +1,6 @@
 var state = null;
 
-var toAdd =  '<svg class="circleSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" version="1.1" baseProfile="full"><defs xmlns="http://www.w3.org/2000/svg"> <pattern id="image" patternUnits="userSpaceOnUse" width="273" height="210"><image xlink:href="images/History.jpg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="273" height="210"></image></pattern></defs></svg>';
+var toAdd =  '<svg class="circleSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" version="1.1" baseProfile="full"><defs xmlns="http://www.w3.org/2000/svg"> <pattern id="image" patternUnits="userSpaceOnUse" width="800" height="710"><image xlink:href="images/columbia_university.jpg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="800" height="710"></image></pattern></defs></svg>';
 
 var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
