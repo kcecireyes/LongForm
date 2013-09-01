@@ -1,32 +1,34 @@
 var state = null;
 
+var toAdd =  '<svg class="circleSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" version="1.1" baseProfile="full"><defs xmlns="http://www.w3.org/2000/svg"> <pattern id="image" patternUnits="userSpaceOnUse" width="800" height="710"><image xlink:href="images/columbia_university.jpg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="800" height="710"></image></pattern></defs></svg>';
+
 var divs = '<div id="topic1"></div><div id="topic2"></div><div id="topic3"></div>';
 
 function resizedw(){
   var winWidth = $(window).width();
   $(".content").width(winWidth);
   $(".content").children("svg").each(function (d, obj){
-    console.log(this)
     $(this).attr("width", winWidth);
   });
-  $("#i1").width(winWidth*5)
+  $("#i1").width(winWidth*5);
 
   var divWidth = $("#mainDiv").width();
 
   if (divWidth <= 400) {
     $(".topics").remove();
     $(".abstract").hide();
+    $(".circleSVG").remove();
     small();
   }
   else if (divWidth > 400 && divWidth < 900){
     $(".topics").remove();
     $(".abstract").hide();
-    $("#circleSVG").remove();
+    $(".circleSVG").remove();
     medium();
   }
   else if(state != "big"){
     $(".topics").remove();
-    $("#circleSVG").remove();
+    // $(".circleSVG").show();
     big();
   };
 }
@@ -42,8 +44,9 @@ $(window).resize(function(){
 
 // In case the window size is less than or equal to 400 px
 function small() {
+  console.log("small was called")
   state = "small";
-  $(".meat").append('<div class=topics></div>')
+  $(".meat").append('<div class=topics></div>');
   $(".topics").append(divs);
   $("#topic1").css("background-color", "#3182bd").append('<div id="arrow" class="arrow-right1"></div>');
   $("#topic1").hover(function() {    
@@ -79,6 +82,7 @@ function small() {
 
 // If the window size is between 401 and 899
 function medium() {
+  console.log("medium was called")
   state = "medium"
   $(".meat").append('<div class=topics></div>')
   $(".topics").append(divs);
@@ -104,6 +108,9 @@ function medium() {
 
 // If the window size is greater than 900
 function big(){ 
+  $(".meat").append(toAdd);
+  console.log("went into big");
+
   state = "big"; 
   var w = 1200,
   h = 600;
@@ -117,21 +124,17 @@ function big(){
   .nodes(nodes)
   .size([w, h]);
 
+  force.start();
+
   var root = nodes[0];
   root.radius = 0;
   root.fixed = true;
-
-  force.start();
 
   var urls = ["History", "Data", "People"];
 
   var svg_m = d3.select("svg");
 
-  $("svg").append("<defs></defs>");
-  $("defs").append("<pattern id='image' patternUnits='userSpaceOnUse' width='6' height='6' x='0' y='0'></pattern>");
-  $("#image").append("<image xlink:href='images/History.jpg' x='0' y='0'/>");
-
-  // $("#topic1").hover(function() {$(this).css("fill", "url('#image');"); });
+  // console.log(svg_m)
 
   svg_m.selectAll("circle")
   .data(nodes.slice(1))
@@ -149,8 +152,10 @@ function big(){
 
     var y = [180, 360, 500];
 
+
+
     svg_m.selectAll("circle")
-    .attr("cx", function(d,i) { return d.x; })
+    .attr("cx", function(d,i) {  return d.x; })
     .attr("cy", function(d,i) { return y[i]; })
     .attr("id", function(d,i) { return "topic" + (i+1); });
   });
